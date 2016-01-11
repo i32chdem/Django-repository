@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title> Destinos </title>
+		<h1> Lista de destinos</h1>
+	</head>
+
+	<body>
+		{% if destinos %}
+		<ul>
+			{% for x in destinos %}
+
+			<a href =/viajes/detalleDestino/{{x.id}}><li> {{x.destino}} </li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<h1> No hay destinos </h1>
+		{% endif %}
+	</body>
+</html>

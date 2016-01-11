@@ -1,0 +1,78 @@
+<!-- Pagina para ver la clasificacion actual -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Clasificacion
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En este apartado podrás ver la tabla de clasificación de la liga a la cual perteneces.</li>
+		<li>Si pulsas sobre cualquier equipo podrás ver su plantilla, de este modo podrás conocer cuales son los equipos rivales.</li>
+		<li>El cálculo de los puntos se realizará un vez acabada cada jornada.</li>
+	</ul>
+{% endblock %}
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<table class="clasificacion">
+				<tr>
+				    <td  scope="col" ><p class="text-center">Equipo</p></td>
+				    <td  scope="col" ><p class="text-center">Puntos</p></td>
+		  		</tr>
+				{% for equipo in equipos %}
+				<tr>					
+					<th class="active">
+						<p class="text-center" data-toggle="modal" data-target="#myModal_{{equipo.id}}">{{equipo}}</p>
+						<!-- Contenedores para crear la pantalla modal -->
+						<div class="modal fase" id="myModal_{{equipo.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+				    		<div class="modal-dialog">
+					    		<div class="modal-content">
+					    			<div class="modal-header"> <!-- Cabecera de la ventana emergente -->
+					    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					    				<h4>Plantilla {{equipo}}</h4>
+					    			</div>
+					    			<div class="modal-body"> <!-- Cuerpo de la ventana emergente -->
+					    				<table class="table table-bordered">
+				    						<tr>
+											    <th  scope="col" class="success"><p class="text-center">Equipo</p></th>
+											    <th  scope="col" class="danger"><p class="text-center">Posicion</p></th>
+									  		</tr>
+					    				{% for jugador in equipo.jugador.all %}
+					    					<tr>
+												<th class="active">
+													<p class="text-center" data-toggle="modal">{{jugador}}</p>
+												</th>
+												<th class="active">
+													<p class="text-center" data-toggle="modal">{{jugador.posicion}}</p>
+												</th>
+											</tr>
+					    				{% endfor %}
+					    				</table>
+					    			</div>
+					    			<div class="modal-footer"> <!-- Pie de la ventana emergente -->
+					    				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+					    			</div>
+				    			</div>
+				    		</div>
+				   		 </div> <!-- Fin contenedores para crear la pantalla modal -->
+					</th>
+
+					<th class="active">
+						<p class="text-center">{{equipo.puntos}}</p>
+					</th>
+
+
+				</tr>
+
+				{%endfor%}
+			</table>
+		</div>
+	</div>
+
+{%endblock%}

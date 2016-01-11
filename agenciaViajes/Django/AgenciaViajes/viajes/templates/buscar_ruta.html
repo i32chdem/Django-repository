@@ -1,0 +1,35 @@
+<!-- Pagina para buscar una ruta concreta -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Buscar</button>
+	</form>
+	</br>
+	{{mensaje}}
+
+	{% if ruta %}
+	<h3>Rutas encontradas:</h3>
+	
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Ruta</th>
+					<th scope="col"><p class="text-center">Duracion</p></th>
+					<th scope="col"><p class="text-center">Precio</p></th>
+					<th scope="col"><p class="text-center">Viajes</p></th>
+				</tr>
+				<tr>
+					<td><p class="text-center">{{ruta.nombre}}</p></td>
+					<td><p class="text-center">{{ruta.duracion}} dias</p></td>
+					<td><p class="text-center">{{ruta.precio}}€</p></td>
+					<td><p class="text-center">
+						{% for viaje in ruta.viajes.all %}
+							<li>{{viaje.destino}}</li>
+						{% endfor %}
+					</p></td>
+				</tr>
+		</table>
+	{% endif %}
+{% endblock %}

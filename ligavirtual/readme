@@ -1,0 +1,4 @@
+Administrador --> nombre de usuario: admin  contrseña: admin
+Si se borra la BBDD, cargar los script importarJornadas.py, importarJugadores.py y importarPuntos.py para rellenar la BBDD con los datos necesarios.
+Para ello ejecutar: python importarJornadas.py
+

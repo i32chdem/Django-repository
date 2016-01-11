@@ -1,0 +1,54 @@
+<!-- Pagina para ver la clasificacion actual -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Mercado de Fichajes
+<h5>Presupuesto: {{presupuesto}}€</h5>
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En esta sección, podrás ver el mercado de fichajes.</li>
+		<li>El mercado de fichajes se actualizará cada día, con un total de 5 jugadores.</li>
+		<li>Mientras tengas dinero suficiente y no hayas ocupado el máximo de jugadores en la plantilla, podrás fichar el jugador que quieras</li>
+		<li>Cuando que un jugador sea fichado, será eliminado del mercado de fichajes, así que ¡corre y date prisa!</li>
+	</ul>
+{% endblock %}
+
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<table class="table table-bordered">
+		<tr>
+		    <th  scope="col" class="success"><p class="text-center">Jugador</p></th>
+		    <th  scope="col" class="info"><p class="text-center">Posicion</p></th>
+		    <th  scope="col" class="warning"><p class="text-center">Precio</p></th>
+		    <th  scope="col" class="danger"><p class="text-center">Puntos</p></th>
+  		</tr>
+		{% for jugador in lista %}
+		<tr>
+			<th class="active">
+				<p class="text-center">{{jugador}}</p>
+			</th> 
+
+			<th class="active">
+				<p class="text-center">{{jugador.posicion}}</p>
+			</th>
+			<th class="active">
+				<p class="text-center">{{jugador.precio}}€</p>
+			</th>
+			<th class="active">
+				<p class="text-center">{{jugador.puntos}}</p>
+			</th>
+			<th>
+				 <form method="post" action="">
+					{% csrf_token %}
+			        {{ form.as_p }}
+			    	<input type="hidden" name="player" value="{{jugador.id}}">
+			        <button class="btn btn-primary" type="submit">Fichar</button>
+				</form>
+			</th>
+		</tr>
+		{%endfor%}
+	</table>
+{%endblock%}

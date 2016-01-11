@@ -1,0 +1,20 @@
+<!-- Pagina dedicada al registro de usuarios -->
+{% extends "base.html" %}
+
+{% block titulo %} 
+¡Registrate!
+{% endblock %}
+
+{% block encabezado %}
+	<button type="submit" class="btn btn-success" onClick="window.location='{% url 'ligamanager.views.base' %}'" >Iniciar sesion</button> <!-- Boton que te lleva a la pagina de login -->
+{% endblock %}
+
+{% block cuerpo %}
+<!-- NO ME MUESTRA LOS MENSAJES DE ERROR - MODIFICA!!! -->
+<form action="{% url 'registro' %}" method="post" class="form-register"> {% csrf_token %}
+	{{ form.as_p }}
+	{{ error_username }}
+	{{ error_password }}
+	<button class="btn btn-primary" type='submit'>Guardar</button>
+</form>
+{% endblock %}

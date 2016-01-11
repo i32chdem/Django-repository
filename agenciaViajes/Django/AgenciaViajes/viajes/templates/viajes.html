@@ -1,0 +1,35 @@
+<!-- Pagina para ver los viajes y añadir nuevos -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Añadir</button>
+	</form>
+	{{mensaje}}
+	<h3>Viajes actuales:</h3>
+	
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Destino</th>
+					<th scope="col"><p class="text-center">Descripcion</p></th>
+					<th scope="col"><p class="text-center">Distancia</p></th>
+					<th scope="col"><p class="text-center">Dias</p></th>
+					<th scope="col"><p class="text-center">Coste</p></th>
+					<th scope="col"><p class="text-center">Desplazamiento</p></th>
+				</tr>
+
+				{% for viaje in viajes %}
+					<tr>
+						<td><p class="text-center">{{viaje.destino.lugar}}</p></td>
+						<td><p class="text-center">{{viaje.destino.descripcion}}</p></td>
+						<td><p class="text-center">{{viaje.destino.distancia}} km</p></td>
+						<td><p class="text-center">{{viaje.dias}}</p></td>
+						<td><p class="text-center">{{viaje.coste}}€</p></td>
+						<td><p class="text-center">{{viaje.desplazamiento}}</p></td>
+					</tr>
+				{% endfor %}
+		</table>
+	
+{% endblock %}

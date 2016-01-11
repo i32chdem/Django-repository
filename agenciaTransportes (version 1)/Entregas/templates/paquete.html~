@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title> Paquetes </title>
+		<h1> Lista de paquetes</h1>
+		<body background="http://k35.kn3.net/D7F25495A.jpg">
+		
+	</head>
+
+	<body>
+		{% if paquetes %}
+		<ul>
+			{% for x in paquetes %}
+			<a href =/Entregas/paquete/{{x.id}}><li> {{x.contenido}} </li>
+			
+			{% endfor %}
+		</ul>
+		{% else %}
+		<h3> No hay paquetes </h3>
+		{% endif %}
+	</body>
+</html>

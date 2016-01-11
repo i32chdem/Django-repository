@@ -1,0 +1,33 @@
+<!-- Pagina para ver las rutas -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+
+	{% if rutas %}
+		<h3>Rutas actuales:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Nombre</th>
+					<th scope="col"><p class="text-center">Paquetes</p></th>
+					<th scope="col"><p class="text-center">Destinatario</p></th>
+					<th scope="col"><p class="text-center">Direccion</p></th>
+					<th scope="col"><p class="text-center">Codigo Postal</p></th>
+				</tr>
+
+				{% for x in rutas %}
+					<tr>
+						<td><p class="text-center">{{x.nombre}}</p></td>
+						<td><p class="text-center">
+						{% for paquete in x.paquetes.all %}
+							{{paquete.contenido}}
+							{{paquete.destinatario}}
+						{% endfor %}
+						</p></td>
+					</tr>
+				{% endfor %}
+		</table>
+	{% else %}
+		<h4>No hay ningun paquete actualmente</h4>
+	{% endif %}
+	
+{% endblock %}

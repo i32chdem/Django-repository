@@ -1,0 +1,56 @@
+<!-- Pagina para ver la plantilla actual -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Plantilla
+<h5>Presupuesto: {{presupuesto}}€</h5>
+{% endblock %}
+
+
+{% block informacion %} 
+	<ul>
+		<li>Aquí, podras ver los jugadores que pertenecen a tu plantilla.</li>
+		<li>Además, podrás vender a tus jugadores, pulsando sobre el botón "Vender".</li>
+	</ul>
+{% endblock %}
+
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<table class="table table-bordered">
+		<tr>
+		    <th scope="col" class="success"><p class="text-center">Nombre</p></th>
+		    <th scope="col" class="info"><p class="text-center">Posicion</p></th>
+		    <th scope="col" class="warning"><p class="text-center">Precio</p></th>
+		    <th scope="col" class="danger"><p class="text-center">Puntos</p></th>
+  		</tr>
+		{% for jugador in lista %}
+		<tr>
+			<th class="active">
+				<p class="text-center">{{jugador}}</p>
+			</th> 
+
+			<th class="active">
+				<p class="text-center">{{jugador.posicion}}</p>
+			</th>
+
+			<th class="active">
+				<p class="text-center">{{jugador.precio}}€</p>
+			</th>
+
+			<th class="active">
+				<p class="text-center">{{jugador.puntos}}</p>
+			</th>
+			<th>
+				 <form method="post" action="">
+					{% csrf_token %}
+			        {{ form.as_p }}
+			    	<input type="hidden" name="player" value="{{jugador.id}}">
+			        <button class="btn btn-primary" type="submit">Vender</button>
+				</form>
+			</th>
+		</tr>
+		{%endfor%}
+		
+	</table>
+{%endblock%}

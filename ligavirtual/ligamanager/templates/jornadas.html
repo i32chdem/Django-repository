@@ -1,0 +1,39 @@
+<!-- Pagina para ver las jornadas de la liga -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Calendario de Jornadas
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En este apartado podrás ver las jornadas que tiene el campeonato con sus fechas.</li>
+	</ul>
+{% endblock %}
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<table class="clasificacion">
+				<tr>
+				    <td  scope="col" ><p class="text-center">Jornada</p></td>
+				    <td  scope="col" ><p class="text-center">Inicio</p></td>
+				    <td  scope="col" ><p class="text-center">Fin</p></td>
+		  		</tr>
+
+		  		{% for jornada in jornadas %}
+				<tr>
+					<th  scope="col" ><p class="text-center">{{jornada}}</p></th>
+					<th  scope="col" ><p class="text-center">{{jornada.inicio}}</p></th>
+					<th  scope="col" ><p class="text-center">{{jornada.fin}}</p></th>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+
+	</div>
+
+{% endblock %}
+

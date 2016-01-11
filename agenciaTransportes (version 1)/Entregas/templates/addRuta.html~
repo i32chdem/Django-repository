@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title> Añadir Ruta </title>
+	</head>
+	<body>
+		<h1> Añadir una nueva Ruta </h1>
+		
+		<form id='formulario' method='post' enctype='multipart/form-data' action=''>
+		{% csrf_token %}
+		{{ form.as_p}}
+		<input type="submit" value="Enviar"/>
+		</form>
+		
+	</body>
+</html>

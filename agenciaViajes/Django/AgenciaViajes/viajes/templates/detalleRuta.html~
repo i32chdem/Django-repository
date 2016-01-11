@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title> Detalles de Ruta </title>
+	</head>
+
+	<body>
+		Detalles de la Ruta
+		<ul>
+			<li> Nombre de la ruta: {{rutaDetalle.Nombre_Ruta}} </li>
+			{% if rutaDetalle.Destinos %}
+			
+			<li>Destinos:-
+			{% for x in rutaDetalle.Destinos.all %}
+			
+			  {{x}}- 
+			
+			{% endfor %}
+			</li>
+			{% endif %}
+
+			<li> Precio Total: {{rutaDetalle.Precio_total}} €</li>
+			<li> Duración (en días): {{rutaDetalle.Duracion_Total}} </li>
+		</ul>
+	</body>
+</html>

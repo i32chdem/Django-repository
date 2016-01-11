@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title> Rutas </title>
+		<h1> Lista de Rutas</h1>
+		
+	</head>
+			<body background="http://www.fondos7.net/wallpaper-original/wallpapers/linda-chica-fondo-blanco-8255.jpg">
+
+	<body>
+		{% if rutas %}
+		<ul>
+			{% for x in rutas %}
+			<a href =/Entregas/ruta/{{x.id}}><li> {{x.nombredelaruta}} </li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<h3> No hay Rutas disponibles </h3>
+		{% endif %}
+	</body>
+</html>

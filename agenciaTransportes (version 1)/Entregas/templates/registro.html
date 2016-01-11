@@ -1,0 +1,11 @@
+<!-- Pagina para registrarse un usuario -->
+{% extends "index.html" %}
+
+{% block contenido %}
+<h2>Registro</h2>
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Registrar</button>
+	</form>
+{% endblock %}

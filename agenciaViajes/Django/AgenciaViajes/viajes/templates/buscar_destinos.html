@@ -1,0 +1,29 @@
+<!-- Pagina para buscar un destino concreto -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Buscar</button>
+	</form>
+	</br>
+	{{mensaje}}
+
+	{% if destinos %}
+	<h3>Destinos encontrados:</h3>
+	
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Lugar</th>
+					<th scope="col"><p class="text-center">Descripcion</p></th>
+					<th scope="col"><p class="text-center">Distancia</p></th>
+				</tr>
+				<tr>
+					<td><p class="text-center">{{destinos.lugar}}</p></td>
+					<td><p class="text-center">{{destinos.descripcion}}</p></td>
+					<td><p class="text-center">{{destinos.distancia}} km</p></td>
+				</tr>
+		</table>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	
+	{% if rutas %}
+		<h3>Rutas actuales:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="E60026">
+			<tr>
+				<th scope="col"><p class="text-center">Nombre</p></th>
+				<th scope="col"><p class="text-center">Paquete</p></th>
+			</tr>
+			{% for x in rutas %}
+				<tr>
+					<td><p class="text-center">{{x.nombre}}</p></td>
+					<td><p class="text-center">{{x.paquetes}}</p></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<h3>No hay rutas actualmente.</h3>
+	{% endif %}
+{% endblock %}

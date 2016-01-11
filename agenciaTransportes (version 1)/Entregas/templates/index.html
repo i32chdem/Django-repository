@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+{%load staticfiles %}
+
+<html lang="en">
+
+	<head>
+		<title> Examen PW </title>
+	</head>
+
+	<body>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="E60026">
+			<div>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.ver_destinatarios' %}">Destinatarios</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.search_destinatario' %}">Buscar destinatario</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.ver_paquetes' %}">Paquetes</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.search_paquete' %}">Buscar paquete</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="/ver_rutas/">Ver rutas</a></th>
+			</div>
+		</table>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="54523">
+			<div>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.registro' %}">Registrarse</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.login' %}">Login</a></th>
+			</div>
+		</table>
+		<div>
+			{% block contenido %}{% endblock %}
+		<div>
+	</body>
+
+</html>

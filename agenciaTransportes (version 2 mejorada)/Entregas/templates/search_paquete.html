@@ -1,0 +1,30 @@
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submint">Buscar</button>
+	</form>
+	</br>
+	{{mensaje}}
+	
+	{% if paquetes %}
+		<h3>Paquetes encontrados:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="E60026">
+			<tr>
+				<th scope="col"><p class="text-center">Contenido</p></th>
+				<th scope="col"><p class="text-center">Valor</p></th>
+				<th scope="col"><p class="text-center">Destinatario</p></th>
+			</tr>
+			{% for x in paquetes %}
+				<tr>
+					<td><p class="text-center">{{x.contenido}}</p></td>
+					<td><p class="text-center">{{x.valor}} €</p></td>
+					<td><p class="text-center">{{x.destinatario.nombre}}</p></td>
+				
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
+{% endblock %}

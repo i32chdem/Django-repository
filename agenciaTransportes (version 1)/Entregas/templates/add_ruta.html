@@ -1,0 +1,11 @@
+<!-- Pagina para añadir nuevas rutas -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Añadir</button>
+	</form>
+	<h4>{{mensaje}}</h4>
+{% endblock %}

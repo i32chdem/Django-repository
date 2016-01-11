@@ -1,0 +1,23 @@
+<!-- Pagina para un equipo -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Tu equipo
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En este apartado podrás cambiar el nombre de tu equipo.</li>
+		<li>Recuerda que no puedes eleguir el nombre de un equipo que ya existe.</li>
+	</ul>
+{% endblock %}
+
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<form method="post" action="">
+		{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Actualizar</button>
+	</form>
+{%endblock%}

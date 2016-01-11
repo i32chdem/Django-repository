@@ -1,0 +1,30 @@
+<!-- Html para el login -->
+{% extends "base.html" %}
+
+
+{% block titulo %} 
+¡Bienvenido!, ya puedes iniciar sesion.
+{% endblock %}
+
+{% block encabezado %}
+  <button type="submit" class="btn btn-success" onClick="window.location='{% url 'ligamanager.views.registro' %}'" >Registrarse</button> <!-- Boton que te lleva a la pagina de registro -->
+{% endblock %}
+
+
+{% block cuerpo %}
+{{user.username}}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<!-- Formulario para el login -->
+  <form action="" method="post" class="form-register"> {% csrf_token %}
+    <div class="form-group">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" placeholder="Usuario" class="form-control"  name="username" value="">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" placeholder="Password" class="form-control" name="password" value="">
+    </div>
+    <button type="submit" class="btn btn-success">Sign in</button> 
+  </form>
+{% endblock%}

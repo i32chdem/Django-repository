@@ -1,0 +1,26 @@
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	
+	{% if paquetes %}
+		<h3>Paquetes actuales:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="E60026">
+			<tr>
+				<th scope="col"><p class="text-center">Contenido</p></th>
+				<th scope="col"><p class="text-center">Valor</p></th>
+				<th scope="col"><p class="text-center">Destinatario</p></th>
+			</tr>
+			{% for x in paquetes %}
+				<tr>
+					<td><p class="text-center">{{x.contenido}}</p></td>
+					<td><p class="text-center">{{x.valor}} €</p></td>
+					<td><p class="text-center">{{x.destinatario.nombre}}</p></td>
+					<td> <a class="btn btn-default" href="{% url 'editar_paquete' pk=x.pk %}"><span class="glyphicon glyphicon-pencil"></span>Editar</a></td>
+					
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<h3>No hay paquetes actualmente.</h3>
+	{% endif %}
+{% endblock %}

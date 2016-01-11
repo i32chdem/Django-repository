@@ -1,0 +1,11 @@
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submint">Editar</button>
+	</form>
+	</br>
+	{{mensaje}}
+{% endblock %}

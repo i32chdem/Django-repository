@@ -1,0 +1,25 @@
+<!-- Pagina para editar los datos de un usuario -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Perfil de {{user.username}}
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En esta sección, podrás editar los datos de tu perfil.</li>
+		<li>Podrás, tanto cambiar tu email, como tu nombre, apellidos y la password de tu cuenta.</li>
+	</ul>
+{% endblock %}
+
+{% block contenido %}
+<h2 class="page-header">Editar Información</h2>
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h2 class="page-header">Cambiar Password</h2>
+		{{formPass.as_p}}
+        <button class="btn btn-primary" type="submit">Actualizar Datos</button>
+    </form>
+{% endblock %}

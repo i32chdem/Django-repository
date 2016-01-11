@@ -1,0 +1,28 @@
+<!-- Pagina para ver las rutas-->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<h3>Rutas actuales:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Ruta</th>
+					<th scope="col"><p class="text-center">Duracion</p></th>
+					<th scope="col"><p class="text-center">Distancia</p></th>
+					<th scope="col"><p class="text-center">Destinos</p></th>
+				</tr>
+
+				{% for ruta in rutas %}
+					<tr>
+						<td><p class="text-center">{{ruta.nombre}}</p></td>
+						<td><p class="text-center">{{ruta.duracion}} horas</p></td>
+						<td><p class="text-center">{{ruta.precio}} km</p></td>
+						<td><p class="text-center">
+						{% for viaje in ruta.viajes.all %}
+							<li>{{viaje.destino}}</li>
+						{% endfor %}
+					</p></td>
+					</tr>
+				{% endfor %}
+		</table>
+	
+{% endblock %}

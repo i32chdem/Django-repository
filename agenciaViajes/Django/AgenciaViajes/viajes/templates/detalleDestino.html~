@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title> Detalle de Destinatario </title>
+		
+		
+	</head>
+
+	<body>
+		Detalle de Destinatario
+		<ul>
+			<li> Nombre:{{destinatarioDetalle.nombre}} </li>
+			<li> Direccion:{{destinatarioDetalle.direccion}} </li>
+			<li> Ciudad:{{destinatarioDetalle.ciudad}} </li>
+			<li> Codigo Postal:{{destinatarioDetalle.codigo_postal}} </li>
+		</ul>
+		
+	</body>
+</html>

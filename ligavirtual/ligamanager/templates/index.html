@@ -1,0 +1,59 @@
+<!-- Pagina principal tras el inicio de sesion de un usuario -->
+{% extends "estructura.html" %}
+
+{% block titulo %}
+Menu Principal
+{% endblock %}
+
+
+{% block informacion %} 
+	<ul>
+		<li>En el menu principal, podrás ver el tablón de noticias de la liga a la que perteneces.</li>
+		<li>Siempre que pertenezcas a una liga, podrás escribir una noticia, la cual verán el resto de jugadores.</li>
+		<li>En este tablón de noticias, se anunciarán además, las ventas y fichajes que realize cada equipo.</li>
+	</ul>
+{% endblock %}
+
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+
+	<!-- container para poner en el centro de la pantalla las  noticias -->
+	<div class="row" id="centro">
+		<div class="col-xs-6 col-md-4"></div>
+		<div class="col-xs-6 col-md-4">
+			<h2>Tablón de noticias</h2>
+			{% for noticia in lista %}
+				<div style="width:400px; height:200px; padding:20px; border-radius:10px; background: #EEF7A7; border: solid 3px #333; color: #000; font-size:12px; text-align:justify; overflow:auto; margin:10px; border-radius: 81px 30px 146px 35px;">
+					<div style="font-size:20px; border-bottom:solid 1px #333; padding:5px;">
+						{{noticia.autor}}<br/>
+						<h6><p class="text-success">Fecha: {{noticia.fecha}}</p></h6>
+					</div><br/>
+					{{noticia}}
+				</div>
+			{% endfor %}
+
+			<nav> <!-- nav para la paginacion -->
+				{% if lista.has_previous %}
+					<a href="?page={{lista.previous_page_number }}">Página anterior</a>
+				{% endif %}
+
+				<p>Página {{lista.number}} de {{lista.paginator.num_pages}}</p>
+
+				{% if lista.has_next %}
+					<a href="?page={{lista.next_page_number}}">Página siguiente</a> 
+				{% endif %}
+			</nav>
+			
+			<h2>Escribe tu noticia</h2>
+			<!-- Formulario para escribir nuevas noticias -->
+			<form method="post" action="">
+				{% csrf_token %}
+				{{ form.as_p }}	
+				<button class="btn btn-primary" type="submit">Enviar noticia</button>		        
+			</form>
+		</div>
+		<div class="col-xs-6 col-md-4"></div>
+	</div>  
+
+{% endblock %}

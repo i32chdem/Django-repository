@@ -1,0 +1,22 @@
+<!-- Pagina para ver los destinos -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<h3>Destinos actuales:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Lugar</th>
+					<th scope="col"><p class="text-center">Descripcion</p></th>
+					<th scope="col"><p class="text-center">Distancia</p></th>
+				</tr>
+
+				{% for destino in destinos %}
+					<tr>
+						<td><p class="text-center">{{destino.lugar}}</p></td>
+						<td><p class="text-center">{{destino.descripcion}}</p></td>
+						<td><p class="text-center">{{destino.distancia}} km</p></td>
+					</tr>
+				{% endfor %}
+		</table>
+	
+{% endblock %}

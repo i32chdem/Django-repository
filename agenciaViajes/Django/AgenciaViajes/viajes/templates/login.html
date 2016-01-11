@@ -1,0 +1,11 @@
+<!-- Pagina para logear usuario -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Entrar</button>
+	</form>
+	{{mensaje}}
+{% endblock %}

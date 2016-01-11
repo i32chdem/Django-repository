@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+{%load staticfiles %}
+
+<html lang="en">
+
+	<head>
+		<title> Examen PW </title>
+	</head>
+
+	<body>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="E60026">
+			<div>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.verDestinos' %}">Destinos</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.destinos' %}">Añadir destinos</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.buscarDestino' %}">Buscar destinos</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.verViajes' %}">Viajes</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.viajes' %}">Añadir viajes</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.buscarViaje' %}">Buscar viaje</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.modificarViaje' %}">Modificar viaje</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="/ver_rutas/">Rutas</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="/rutas/">Añadir ruta</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="/buscar_rutas/">Buscar ruta</a></th>
+
+
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.registro' %}">Registrarse</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.login' %}">Login</a></th>
+				{% if user.is_authenticated %}
+					<th scope="col"><p class="text-center"><a type="button" href="{% url 'viajes.views.logout_view' %}">Logout</a></th>
+				{% endif %}
+				{% if user.username %}
+					<th scope="col"><p class="text-center">{{user.username}}</th>
+				{% endif %}
+			</div>
+		</table>
+		<div>
+			{% block contenido %}
+			<h1>¡Bienvenido a la agencia de viaje!</h1>
+			{% endblock %}
+		<div>
+	</body>
+
+</html>

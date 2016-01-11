@@ -1,0 +1,100 @@
+<!-- Pagina para ver la clasificacion actual -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Alineación
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En este apartado podrás organizar cual es la alinación con la que saldrás cada jornada.</li>
+		<li>Recuerda, que solo te puntuarán los jugadores que tengas en la alineacion titular al comienzo de una jornada.</li>
+		<li>Además, una vez comenzada una jornada no podrás hacer ya cambios en la alineación.</li>
+		<li>Para elegir un jugador al equipo, selecciona la opción "Elegir titular", sobre el jugador que quieres hacerlo.</li>
+		<li>Para quitar un jugador del once inicial, solo tienes que darle a la opción de "Elegir suplente".</li>
+		<li>Solo podrás alinear 11 jugadores de entre los cuales solo podrás elegir un portero</li>
+	</ul>
+{% endblock %}
+
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+
+	<div class="col-md-6">
+		<h2>Plantilla</h2>
+		<!-- JUGADORES PARA ELEGIR PLANTILLA TITULAR -->
+		<table class="table table-bordered">
+			<tr>
+			    <th  scope="col" class="success"><p class="text-center">Jugador</p></th>
+			    <th  scope="col" class="info"><p class="text-center">Posicion</p></th>
+			    <th  scope="col" class="warning"><p class="text-center">Precio</p></th>
+			    <th  scope="col" class="danger"><p class="text-center">Puntos</p></th>
+	  		</tr>
+			{% for jugador in jugadores %}
+			<tr>
+				<th class="active">
+					<p class="text-center">{{jugador}}</p>
+				</th> 
+
+				<th class="active">
+					<p class="text-center">{{jugador.posicion}}</p>
+				</th>
+				<th class="active">
+					<p class="text-center">{{jugador.precio}}€</p>
+				</th>
+				<th class="active">
+					<p class="text-center">{{jugador.puntos}}</p>
+				</th>
+				<th>
+					<!-- FORMULARIO PARA ELEGIR LOS TITULARES -->
+					<form method="post" action="">
+						{% csrf_token %}
+				        {{ form.as_p }}
+				    	<input type="hidden" name="elegido" value="{{jugador.id}}">
+				        <button class="btn btn-primary" type="submit">Elegir titular</button>
+					</form>
+				</th>
+			</tr>
+			{%endfor%}
+		</table>
+	</div>
+
+	<div class="col-md-6">
+		<h2>Once titular</h2>
+		<!-- ALINEACION TITULAR -->
+		<table class="table table-bordered">
+			<tr>
+			    <th  scope="col" class="success"><p class="text-center">Jugador</p></th>
+			    <th  scope="col" class="info"><p class="text-center">Posicion</p></th>
+			    <th  scope="col" class="warning"><p class="text-center">Precio</p></th>
+			    <th  scope="col" class="danger"><p class="text-center">Puntos</p></th>
+	  		</tr>
+			{% for jugador in titulares %}
+			<tr>
+				<th class="active">
+					<p class="text-center">{{jugador}}</p>
+				</th> 
+
+				<th class="active">
+					<p class="text-center">{{jugador.posicion}}</p>
+				</th>
+				<th class="active">
+					<p class="text-center">{{jugador.precio}}€</p>
+				</th>
+				<th class="active">
+					<p class="text-center">{{jugador.puntos}}</p>
+				</th>
+				<th>
+					<!-- FORMULARIO PARA ELEGIR LOS SUPLENTES -->
+					<form method="post" action="">
+						{% csrf_token %}
+				        {{ suplentes.titular }}
+				    	<input type="hidden" name="reserva" value="{{jugador.id}}">
+				        <button class="btn btn-danger" type="submit">Elegir suplente</button>
+					</form>
+				</th>
+			</tr>
+			{%endfor%}
+		</table>
+	</div>
+{%endblock%}

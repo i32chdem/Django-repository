@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- Para utilizar static -->
+
+<!-- saved from url=(0043)http://getbootstrap.com/examples/jumbotron/ -->
+<html lang="en">
+
+<head>
+   
+  <link rel="icon" type="image/png" href="futbol.png">
+  
+  <title>Liga manager</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'plugins/bootstrap-3.3.5-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+  <!-- mis stilos CSS -->
+  <link href="{% static 'css/stilos.css' %}" rel="stylesheet">
+    
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+
+    <!-- Barra de navegacion -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'ligamanager.views.index' %}">Liga Manager</a>  <!-- Direccion a la que acceder cuando se pincha en el boton Liga Manager -->
+        </div>
+
+        </div> 
+          <div class="col-md-1"></div> 
+          <div class="col-md-1"></div>   
+        </div>
+
+         <div class="navbar-header">	<!-- Incluye los botones de la barra de menu -->
+    		   <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.index' %}">Menu Principal</a> 
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.crearLiga_view' %}">Crear Liga</a> 
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.entrarLiga_view' %}">Entrar Liga</a> 
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.crearEquipo_view' %}">Info equipo</a>
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.plantilla_view' %}">Plantilla</a> 
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.alineacion_view' %}">Alineacion</a> 
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.fichajes_view' %}">Fichajes</a> 
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.clasificacion_view' %}">Clasificacion</a> 
+            <a type="button" class="btn btn-success" href="{% url 'ligamanager.views.jornadas_view' %}">Jornadas</a>  
+		    </div>	
+
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+
+        <div id="navbar" class="navbar-collapse collapse"> <!-- Incluye el boton de log out y el nombre del usuario actual -->
+          <a class="navbar-brand" href="{% url 'editar' %}" >{{user.username}}</a>  <!-- Mostrar el nombre del usuario registrado (si lo pulsamos podemos editar su informacion) -->
+          <a type="button" class="btn btn-warning" href="{% url 'logout' %}">Logout</a> <!-- Llamamos a la vista logout-->
+        </div><!--/.navbar-collapse -->
+    </nav>
+
+
+    <!-- Segunda cabezera de la pagina -->
+    <div class="jumbotron">
+      <div class="row">
+
+         <div class="col-xs-1"></div>
+
+         <!--  Titulo dinamico -->
+         <div class="col-xs-6">
+            <h2>{% block titulo %} {% endblock %}</h2> 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pantallaModal"> <!-- Boton que lanza el modal -->
+               Ayuda
+            </button>
+         </div>
+         
+         <!-- Contenedores para crear la pantalla modal -->
+         <div class="modal fase" id="pantallaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header"> <!-- Cabecera de la ventana emergente -->
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                     <h2> Información </h4>
+                  </div>
+                  <div class="modal-body"> <!-- Cuerpo de la ventana emergente -->
+                     {% block informacion %} {% endblock %}
+                  </div>
+                  <div class="modal-footer"> <!-- Pie de la ventana emergente -->
+                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                  </div>
+               </div>
+            </div>
+         </div> <!-- Fin contenedores para crear la pantalla modal -->
+      </div> <!-- Fin del div row -->
+   </div>
+
+
+    <div class="container">
+    {% block contenido %} {% endblock %} <!--  Bloque contenido dinamico de cada pagina -->
+   </div>
+   
+      <hr>
+   <div class="col-xs-1"></div>
+   <!-- Pie de pagina -->
+      <footer>
+        <p>© Maxi Chicano 2015</p>
+      </footer>
+   
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'plugins/jquery/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-3.3.5-dist/js/bootstrap.min.js' %}"></script>
+
+  
+
+</body></html>

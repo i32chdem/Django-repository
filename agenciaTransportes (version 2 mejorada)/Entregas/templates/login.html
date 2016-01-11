@@ -1,0 +1,13 @@
+{% extends "estructura.html" %}
+
+{% block contenido %}
+<h1>Login</h1>
+<h3>Logeate para poder modificar datos</h3>
+	<form method="post" action="">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submint">Entrar</button>
+	</form>
+	</br>
+	{{mensaje}}
+{% endblock %}

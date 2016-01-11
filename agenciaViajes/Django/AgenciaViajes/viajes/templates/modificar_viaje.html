@@ -1,0 +1,16 @@
+<!-- Pagina para buscar un viaje concreto -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		<h4>Viaje a modificar:</h4>
+		{{ form.as_p }}
+		<h4>Datos del viaje modificado:</h4>
+		{{ nuevo.as_p }}
+		<button type="submit">Modificar</button>
+	</form>
+	</br>
+	{{mensaje}}
+
+{% endblock %}

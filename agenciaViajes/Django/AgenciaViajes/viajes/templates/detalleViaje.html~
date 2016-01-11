@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title> Detalles de {{viajeDetalle.destino}} </title>		
+	</head>
+	<body>
+		<h1>Detalles del viaje: {{viajeDetalle.destino}} </h2>
+		<ul>
+			<li> Destino: {{viajeDetalle.destino}} </li>
+			<li> Numero de dias: {{viajeDetalle.numero_de_dias}} </li>
+			<li> Coste: {{viajeDetalle.coste}} € </li>
+			<li> Modo de desplazamiento: {{viajeDetalle.modo_desplazamiento}} </li>
+		</ul>
+			<a href ="/viajes/detalleViaje/{{viajeDetalle.id}}"> > Editar</a>
+	</body> 
+
+</html>

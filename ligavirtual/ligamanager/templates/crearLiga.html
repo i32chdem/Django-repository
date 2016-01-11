@@ -1,0 +1,23 @@
+<!-- Pagina crear una liga un usuario -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Crear Liga
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En esta sección podrás crear una liga en la cual participar tu y tus amigos.</li>
+		<li>La liga estará compuesta por un nombre y una contraseña.</li>
+	</ul>
+{% endblock %}
+
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<form method="post" action="">
+		{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Crear</button>
+	</form>
+{%endblock%}

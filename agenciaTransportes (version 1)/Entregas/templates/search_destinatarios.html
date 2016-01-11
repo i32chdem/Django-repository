@@ -1,0 +1,34 @@
+<!-- Pagina para buscar destinatarios -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Buscar</button>
+	</form>
+
+	{% if destinatario %}
+		<h3>Destinatarios encontrados:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Nombre</th>
+					<th scope="col"><p class="text-center">Direccion</p></th>
+					<th scope="col"><p class="text-center">Ciudad</p></th>
+					<th scope="col"><p class="text-center">Codigo Postal</p></th>
+				</tr>
+
+				{% for x in destinatario %}
+					<tr>
+						<td><p class="text-center">{{x.nombre}}</p></td>
+						<td><p class="text-center">{{x.direccion}}</p></td>
+						<td><p class="text-center">{{x.ciudad}}</p></td>
+						<td><p class="text-center">{{x.codigo_postal}}</p></td>						
+					</tr>
+				{% endfor %}
+		</table>
+	{% else %}
+		<h4>El destinatario que buscas no existe.</h4>
+	{% endif %}
+	
+{% endblock %}

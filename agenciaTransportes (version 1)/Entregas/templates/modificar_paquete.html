@@ -1,0 +1,14 @@
+<!-- Pagina para modificar paquetes -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	<form method="post" action="">
+		{% csrf_token %}
+		<h3>Paquete a modificar:</h3>
+		{{ form.as_p }}
+		<h3>Valor del paquete modificado:</h3>
+		{{ new_form.as_p }}
+		<button type="submit">Modificar</button>
+	</form>
+	<h4>{{mensaje}}</h4>
+{% endblock %}

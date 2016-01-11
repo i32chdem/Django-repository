@@ -1,0 +1,24 @@
+<!-- Pagina para entrar (registrarte) a una liga -->
+{% extends "estructura.html" %}
+
+{% block titulo %} 
+Entrar en Liga
+{% endblock %}
+
+{% block informacion %} 
+	<ul>
+		<li>En este apartado, podrás entrar en una liga para jugar en ella.</li>
+		<li>Escribe el nombre y contraseña de la liga para poder entrar en ella.</li>
+		<li>Recuerda que si no conoces ninguna liga aun podrás crear una en la pestaña "Crear Liga".</li>
+	</ul>
+{% endblock %}
+
+
+{% block contenido %}
+	{% include "_messages.html" %} <!-- incluimos el html messages para imprimir los mensajes -->
+	<form method="post" action="">
+		{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Entrar</button>
+	</form>
+{%endblock%}

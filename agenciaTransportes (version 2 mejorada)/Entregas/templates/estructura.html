@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+{%load staticfiles %}
+<html lang="en">
+	<head>
+		<title> Examen PW </title>
+	</head>
+	<body>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="E60026">
+			<div>
+				<!-- Destinatario -->
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.ver_destinatarios' %}">Destinatarios</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.add_destinatario' %}">Añadir destinatario</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.search_destinatario' %}">Buscar destinatario</a></th>
+				<!-- Paquetes -->
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.ver_paquetes' %}">Paquetes</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.add_paquete' %}">Añadir paquete</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.search_paquete' %}">Buscar paquete</a></th>
+				<!-- Ruta -->			
+				<th scope="col"><p class="text-center"><a type="button" href="/ver_rutas/">Rutas</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="/add_rutas/">Añadir ruta</a></th>	
+				<th scope="col"><p class="text-center"><a type="button" href="/buscar_rutas/">Buscar ruta</a></th>	
+				<!-- Usuario -->			
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.registro' %}">Registrarse</a></th>
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.login' %}">Login</a></th>	
+				<th scope="col"><p class="text-center"><a type="button" href="{% url 'Entregas.views.logout_view' %}">Logout</a></th>
+				{% if user.username %}
+					<h3>Usuario: {{user.username}}</h3>
+				{% endif %}
+					
+			</div>
+		</table>
+		
+		<div>
+			{% block contenido %}{% endblock %}
+		</div>
+	</body>
+</html>

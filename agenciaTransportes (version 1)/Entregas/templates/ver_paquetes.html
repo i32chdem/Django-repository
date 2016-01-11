@@ -1,0 +1,31 @@
+<!-- Pagina para ver los paquetes -->
+{% extends "estructura.html" %}
+
+{% block contenido %}
+
+	{% if paquetes %}
+		<h3>Paquetes actuales:</h3>
+		<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+				<tr>
+					<th scope="col"><p class="text-center">Contenido</th>
+					<th scope="col"><p class="text-center">Valor</p></th>
+					<th scope="col"><p class="text-center">Destinatario</p></th>
+					<th scope="col"><p class="text-center">Direccion</p></th>
+					<th scope="col"><p class="text-center">Codigo Postal</p></th>
+				</tr>
+
+				{% for x in paquetes %}
+					<tr>
+						<td><p class="text-center">{{x.contenido}}</p></td>
+						<td><p class="text-center">{{x.valor}}€</p></td>
+						<td><p class="text-center">{{x.destinatario.nombre}}</p></td>
+						<td><p class="text-center">{{x.destinatario.direccion}}</p></td>
+						<td><p class="text-center">{{x.destinatario.codigo_postal}}</p></td>
+					</tr>
+				{% endfor %}
+		</table>
+	{% else %}
+		<h4>No hay ningun paquete actualmente</h4>
+	{% endif %}
+	
+{% endblock %}

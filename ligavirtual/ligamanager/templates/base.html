@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- Para utilizar static -->
+
+<!-- saved from url=(0043)http://getbootstrap.com/examples/jumbotron/ -->
+<html lang="en">
+
+<head>
+   
+  <link rel="icon" type="image/png" href="/static/img/futbol.png">
+
+    <title>Liga Virtual</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'plugins/bootstrap-3.3.5-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- mis stilos CSS -->
+    <link href="{% static 'css/stilos.css' %}" rel="stylesheet">
+    
+  </head>
+
+  <body>
+    <!-- Barra de navegacion -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'ligamanager.views.base' %}">Liga Manager</a>  <!-- Direccion a la que acceder cuando se pincha en el boton Liga Manager -->
+          <div class="col-md-1"></div> 
+          <div class="col-md-1"></div> 
+        </div>
+
+        {% block encabezado %} {% endblock %}
+      </div>
+    </nav>
+    
+
+
+  <!-- Segunda cabezera de la pagina -->
+    <div class="jumbotron">
+      <div class="row">
+
+         <div class="col-xs-1"></div>
+
+         <!--  Titulo dinamico -->
+         <div class="col-xs-6">
+            <h2>{% block titulo %} {% endblock %}</h2> 
+         </div>
+   </div>  
+
+
+
+
+
+
+
+    <div class="page-header"><h1></h1></div> <!-- Separa el encabezado del cuerpo (si no lo pones se queda montado) -->
+    <!-- CUERPO DE LA PAGINA -->
+    <div class="container">
+      {% block cuerpo %} {% endblock %}
+    </div> <!--Fin de container -->
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <hr>
+
+	 <!-- Pie de pagina -->
+      <footer>
+        <p>© Maxi Chicano 2015</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'plugins/jquery/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-3.3.5-dist/js/bootstrap.min.js' %}"></script>
+
+  
+
+</body></html>
